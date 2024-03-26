@@ -4,6 +4,11 @@ const {access} = require('../middleware/access.middleware');
 const {UserModel}=require('../models/user.model')
 const listRouter = express.Router();
 
+
+
+
+
+
 listRouter.get( "/all",auth,access(["Admin", "User"]),
     async (req, res) => {
       try {

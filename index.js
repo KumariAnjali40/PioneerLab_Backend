@@ -2,13 +2,37 @@ const express = require('express');
 const {connection}= require('./db');
 const {userRouter}= require("./routes/user.routes");
 const {listRouter}= require('./routes/list.routes');
+const swaggerJsDoc=require('swagger-jsdoc');
+const swaggerUi=require('swagger-ui-express');
 const axios = require('axios');
 
 const app = express();
 
 app.use(express.json());
-app.use('/user',userRouter);
-app.use('/list',listRouter)
+app.use('/users',userRouter);
+app.use('/list',listRouter);
+
+const options={
+   definition:{
+       openapi:"3.0.0",
+       info:{
+           title:"User Management System",
+           version:"1.0.0"
+       },
+       servers:[
+           {
+               url:"http://localhost:4500"
+           }
+       ]
+   },
+   apis:["./routes/*.js"]
+}
+
+
+
+const openApiSpec=swaggerJsDoc(options);
+
+app.use('/apidocs',swaggerUi.serve,swaggerUi.setup(openApiSpec));
 
 app.get('/',(req,res)=>{
     res.send("hello")
