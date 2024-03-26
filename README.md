@@ -1,0 +1,114 @@
+
+
+# Task 2: Create API Endpoints for Data Retrieval
+
+Objective: Develop API endpoints to fetch data from a public API with filtering options.
+
+### Fake API:
+Explore the provided public API for fetching data: [Fake API](https://api.publicapis.org/entries)
+
+Requirements:
+Utilize Node.js and Express.js to create API routes.
+Fetch data from the provided public API.
+Implement filtering options for data retrieval based on categories and result limits.
+Evaluation Criteria:
+Successful integration of API endpoints for data retrieval.
+Proper implementation of filtering options for categories and result limits.
+Error handling for invalid requests and edge cases.
+
+
+# API Endpoints for Checking Filtering and Sorting
+
+Explore various functionalities of your API with these endpoints.
+
+1. **Filtering by Category**
+   - **Endpoint**: `http://localhost:4500/api/entries?category=Animals`
+   - **Description**: Filter entries by the "Animals" category.
+   - **Sample Output**:
+     ```json
+     {
+       "totalResults": 3,
+       "currentPage": 1,
+       "entries": [
+         {
+           "API": "AdoptAPet",
+           "Description": "Resource to help get pets adopted",
+           "Auth": "apiKey",
+           "HTTPS": true,
+           "Cors": "yes",
+           "Link": "https://www.adoptapet.com/public/apis/pet_list.html",
+           "Category": "Animals"
+         },
+         {
+           "API": "Axolotl",
+           "Description": "Collection of axolotl pictures and facts",
+           "Auth": "",
+           "HTTPS": true,
+           "Cors": "no",
+           "Link": "https://theaxolotlapi.netlify.app/",
+           "Category": "Animals"
+         },
+         {
+           "API": "Cat Facts",
+           "Description": "Daily cat facts",
+           "Auth": "",
+           "HTTPS": true,
+           "Cors": "no",
+           "Link": "https://alexwohlbruck.github.io/cat-facts/",
+           "Category": "Animals"
+         }
+       ]
+     }
+     ```
+
+2. **Sorting by API Name**
+   - **Endpoint**: `http://localhost:4500/api/entries?sort=apiName`
+   - **Description**: Sort entries alphabetically by API name.
+   - **Sample Output**:
+     ```json
+     {
+       "totalResults": 1427,
+       "currentPage": 1,
+       "entries": [
+         {
+           "API": "3rd Party Formula 1 Data",
+           "Description": "Formula 1 Data from the beginning of the world championships in 1950",
+           "Auth": "",
+           "HTTPS": true,
+           "Cors": "no",
+           "Link": "https://ergast.com/mrd/",
+           "Category": "Sports & Fitness"
+         },
+         {
+           "API": "7Timer!",
+           "Description": "Global weather forecast",
+           "Auth": "",
+           "HTTPS": true,
+           "Cors": "unknown",
+           "Link": "https://7timer.info/",
+           "Category": "Weather"
+         },
+         ...
+       ]
+     }
+     ```
+
+3. **Combining Filtering and Sorting**
+   - **Endpoint**: `http://localhost:4500/api/entries?category=Animals&sort=apiName`
+   - **Description**: Filter entries by the "Animals" category and sort them alphabetically by API name.
+   - **Sample Output**: _(Similar to the previous sample with filtered and sorted entries)_
+
+4. **Pagination with Filtering and Sorting**
+   - **Endpoint**: `http://localhost:4500/api/entries?page=2&limit=10&sort=apiName`
+   - **Description**: Retrieve the second page of results with a limit of 10 entries per page, sorted alphabetically by API name.
+   - **Sample Output**: _(Paginated and sorted entries for the second page)_
+
+5. **Testing for No Results**
+   - **Endpoint**: `http://localhost:4500/api/entries?category=NonExistentCategory`
+   - **Description**: Test if the API properly handles cases where no entries match the specified category.
+   - **Sample Output**: _(An empty array as there are no entries for the non-existent category)_
+
+6. **Testing for Invalid Sorting Parameter**
+   - **Endpoint**: `http://localhost:4500/api/entries?sort=invalidParameter`
+   - **Description**: Test if the API properly handles cases where an invalid sorting parameter is provided.
+   - **Sample Output**: _(Error message indicating invalid sorting parameter)_
