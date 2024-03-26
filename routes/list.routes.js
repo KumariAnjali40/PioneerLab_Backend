@@ -4,12 +4,6 @@ const {access} = require('../middleware/access.middleware');
 const {UserModel}=require('../models/user.model')
 const listRouter = express.Router();
 
-//auth always come before access
-listRouter.get('/list',auth,access(["SuperAdmin","Admin","User"]),(req,res)=>{
-    res.json({msg:"All movies data"});
-})
-
-
 listRouter.get( "/all",auth,access(["Admin", "User"]),
     async (req, res) => {
       try {
