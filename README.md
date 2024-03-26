@@ -1,5 +1,65 @@
 
 
+## Task 1: Implement User Authentication with JWT
+
+### User Registration
+- **URL:** `/api/user/register`
+- **Method:** `POST`
+- **Description:** Registers a new user.
+- **Request Body:**
+    ```json
+    {
+        "name": "string",
+        "email": "string",
+        "pass": "string",
+        "role": "string"
+    }
+    ```
+- **Response:**
+    ```json
+    {
+        "msg": "User successfully registered",
+        "user": { "userObject" }
+    }
+    ```
+
+### User Login
+- **URL:** `/api/user/login`
+- **Method:** `POST`
+- **Description:** Logs in a user.
+- **Request Body:**
+    ```json
+    {
+        "email": "string",
+        "pass": "string"
+    }
+    ```
+- **Response:**
+    ```json
+    {
+        "msg": "Login successful",
+        "token": "string",
+        "refresh_token": "string"
+    }
+    ```
+
+### User Logout
+- **URL:** `/api/user/logout`
+- **Method:** `GET`
+- **Description:** Logs out a user.
+- **Request Headers:**
+    ```json
+    {
+        "Authorization": "Bearer <token>"
+    }
+    ```
+- **Response:**
+    ```json
+    {
+        "msg": "Logged out"
+    }
+    ```
+
 # Task 2: Create API Endpoints for Data Retrieval
 
 Objective: Develop API endpoints to fetch data from a public API with filtering options.
@@ -112,3 +172,61 @@ Explore various functionalities of your API with these endpoints.
    - **Endpoint**: `http://localhost:4500/api/entries?sort=invalidParameter`
    - **Description**: Test if the API properly handles cases where an invalid sorting parameter is provided.
    - **Sample Output**: _(Error message indicating invalid sorting parameter)_
+  
+
+ ## Task 4: Secure API Endpoint for Authenticated Users Only
+
+### Get All Users
+- **URL:** `/api/list/all`
+- **Method:** `GET`
+- **Description:** Get a list of all users.
+- **Request Headers:**
+    ```json
+    {
+        "Authorization": "Bearer <token>"
+    }
+    ```
+- **Response:**
+    ```json
+    {
+        "users_list": [ { "userObjects" } ]
+    }
+    ```
+
+### Update User
+- **URL:** `/api/list/update/:id`
+- **Method:** `PATCH`
+- **Description:** Update a user by ID.
+- **Request Parameters:**
+    - `id`: User ID
+- **Request Body:**
+    ```json
+    {
+        "fieldsToUpdate": "newValues"
+    }
+    ```
+- **Response:**
+    ```json
+    {
+        "msg": "User updated successfully"
+    }
+    ```
+
+### Delete User
+- **URL:** `/api/list/delete/:id`
+- **Method:** `DELETE`
+- **Description:** Delete a user by ID.
+- **Request Parameters:**
+    - `id`: User ID
+- **Request Headers:**
+    ```json
+    {
+        "Authorization": "Bearer <token>"
+    }
+    ```
+- **Response:**
+    ```json
+    {
+        "msg": "User deleted successfully"
+    }
+    ```
