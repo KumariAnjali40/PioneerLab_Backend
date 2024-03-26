@@ -1,11 +1,13 @@
 const express = require('express');
 const {connection}= require('./db');
-const {userRouter}= require("./routes/user.routes")
+const {userRouter}= require("./routes/user.routes");
+const {listRouter}= require('./routes/list.routes');
 
 const app = express();
 
 app.use(express.json());
-app.use('/user',userRouter)
+app.use('/user',userRouter);
+app.use('/list',listRouter)
 
 app.get('/',(req,res)=>{
     res.send("hello")
