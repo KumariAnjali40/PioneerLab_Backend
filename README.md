@@ -1,4 +1,22 @@
 
+## PioneerLab Backend Assignment
+
+
+## Deployment and Swagger Documentation
+
+- [Backend Deployment Link](https://pioneerlab-backend.onrender.com/) - Visit this link to access the deployed API.
+- [Swagger Documentation Link](https://pioneerlab-backend.onrender.com/apidocs/) - View the Swagger documentation for detailed API specifications.
+
+
+## Getting Started
+
+To run the project locally, follow these simple steps:
+
+1. Clone this repository to your local machine.
+2. Install project dependencies using `npm install`.
+3. Set up environment variables, including the secret key for JWT and any necessary configurations for connecting to MongoDB.
+4. Start the server by running `npm start`.
+
 
 ## Task 1: Implement User Authentication with JWT
 
